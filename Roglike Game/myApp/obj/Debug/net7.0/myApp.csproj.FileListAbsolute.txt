@@ -1,0 +1,15 @@
+D:\GitHub\Roglike-Game\Roglike Game\myApp\bin\Debug\net7.0\myApp.exe
+D:\GitHub\Roglike-Game\Roglike Game\myApp\bin\Debug\net7.0\myApp.deps.json
+D:\GitHub\Roglike-Game\Roglike Game\myApp\bin\Debug\net7.0\myApp.runtimeconfig.json
+D:\GitHub\Roglike-Game\Roglike Game\myApp\bin\Debug\net7.0\myApp.dll
+D:\GitHub\Roglike-Game\Roglike Game\myApp\bin\Debug\net7.0\myApp.pdb
+D:\GitHub\Roglike-Game\Roglike Game\myApp\obj\Debug\net7.0\myApp.csproj.AssemblyReference.cache
+D:\GitHub\Roglike-Game\Roglike Game\myApp\obj\Debug\net7.0\myApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\Roglike-Game\Roglike Game\myApp\obj\Debug\net7.0\myApp.AssemblyInfoInputs.cache
+D:\GitHub\Roglike-Game\Roglike Game\myApp\obj\Debug\net7.0\myApp.AssemblyInfo.cs
+D:\GitHub\Roglike-Game\Roglike Game\myApp\obj\Debug\net7.0\myApp.csproj.CoreCompileInputs.cache
+D:\GitHub\Roglike-Game\Roglike Game\myApp\obj\Debug\net7.0\myApp.dll
+D:\GitHub\Roglike-Game\Roglike Game\myApp\obj\Debug\net7.0\refint\myApp.dll
+D:\GitHub\Roglike-Game\Roglike Game\myApp\obj\Debug\net7.0\myApp.pdb
+D:\GitHub\Roglike-Game\Roglike Game\myApp\obj\Debug\net7.0\myApp.genruntimeconfig.cache
+D:\GitHub\Roglike-Game\Roglike Game\myApp\obj\Debug\net7.0\ref\myApp.dll
