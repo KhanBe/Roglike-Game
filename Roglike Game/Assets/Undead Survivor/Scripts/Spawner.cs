@@ -5,8 +5,10 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public Transform[] spawnPoint;
+    public SpawnData[] spawnData;
 
     float timer;
+    int level;
 
     void Awake() 
     {
@@ -17,8 +19,10 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-
-        if (timer > 0.5f) {
+        
+        //내림 후 int
+        level = Mathf.Min(Mathf.FloorToInt(GameManager.instance.gameTime / 10f), spawnData.Length - 1);
+        if (timer > spawnData[level].spawnTime) {
             timer = 0f;
             Spawn();
         }
@@ -27,9 +31,21 @@ public class Spawner : MonoBehaviour
     void Spawn()
     {
         //적 오브젝트 생성
-        GameObject enemy = GameManager.instance.pool.Get(Random.Range(0, 2));
+        GameObject enemy = GameManager.instance.pool.Get(0);
 
         //적 spawnPoint로 랜덤 배치
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
+        //Enemy클래스에서 만든 Init함수 호출
+        enemy.GetComponent<Enemy>().Init(spawnData[level]);
     }
+}
+
+//직렬화
+[System.Serializable]
+public class SpawnData
+{
+    public float spawnTime;
+    public int spriteType;
+    public int health;
+    public float speed;
 }
