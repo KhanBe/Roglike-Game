@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     public Player player;
     public PoolManager pool;
+    
     void Awake()
     {
         instance = this;//자기 자신 값 넣기

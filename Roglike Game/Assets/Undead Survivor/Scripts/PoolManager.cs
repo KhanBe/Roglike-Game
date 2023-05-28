@@ -20,6 +20,7 @@ public class PoolManager : MonoBehaviour
         }
     }
 
+    //i -> prefabs의 종류 인덱스
     public GameObject Get(int i)
     {
         //반환할 오브젝트
@@ -33,7 +34,7 @@ public class PoolManager : MonoBehaviour
             }
         }
 
-        if (!select) { //null이면
+        if (!select) { //null이면 생성
             //transform(자신) ->poolManager의 자식오브젝트로 들어간다
             select = Instantiate(prefabs[i], transform);
             
