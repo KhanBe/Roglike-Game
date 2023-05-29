@@ -18787,6 +18787,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 1409147385684797196, guid: 83353ad1731d28847bbcf0885bd927d0, type: 3}
   - {fileID: 6135204310572715967, guid: 63a1bbfed801a9d4d89860256015a84c, type: 3}
+  - {fileID: 8329611503525554878, guid: 790884a31df31534cbaccfac4d189c7a, type: 3}
 --- !u!4 &1796163783
 Transform:
   m_ObjectHideFlags: 0
@@ -19030,6 +19031,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1965182327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1965182328}
+  - component: {fileID: 1965182329}
+  m_Layer: 0
+  m_Name: Weapon 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1965182328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965182327}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2060592877}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1965182329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965182327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116a9dc923835494ea3d763c8817b22e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
+  prefabId: 2
+  damage: 5
+  count: 1
+  speed: 0
 --- !u!1 &2047039288
 GameObject:
   m_ObjectHideFlags: 0
@@ -19152,6 +19202,7 @@ Transform:
   - {fileID: 1677249579}
   - {fileID: 2067972635}
   - {fileID: 1552103638}
+  - {fileID: 1965182328}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19206,6 +19257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputVector: {x: 0, y: 0}
   speed: 5
+  scanner: {fileID: 0}
 --- !u!114 &2060592881
 MonoBehaviour:
   m_ObjectHideFlags: 0

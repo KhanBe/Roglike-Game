@@ -7,8 +7,17 @@ public class Weapon : MonoBehaviour
     public int id;
     public int prefabId;
     public float damage;
-    public int count;
+    public int count;//무기개수 또는 관통력
     public float speed;
+
+    float timer;
+    Player player;
+
+    void Awake() 
+    {   
+        //부모오브젝트의 컴포넌트 가져오기
+        player = GetComponentInParent<Player>();
+    }
 
     void Start()
     {
@@ -23,6 +32,15 @@ public class Weapon : MonoBehaviour
                 transform.Rotate(Vector3.back * speed * Time.deltaTime);
                 break;
 
+            case 1:
+                timer += Time.deltaTime;
+
+                if (timer > speed) {
+                    timer = 0f;
+                    Fire();
+                }
+                
+                break;
             default:
                 break;
         }
@@ -47,12 +65,15 @@ public class Weapon : MonoBehaviour
                 speed = 150;
                 Locate();
                 break;
-
+            case 1:
+                speed = 0.3f;
+                break;
             default:
                 break;
         }
     }
 
+    //삽 배치
     void Locate()
     {
         for (int i = 0; i < count; i++) {
@@ -81,7 +102,24 @@ public class Weapon : MonoBehaviour
             bullet.Translate(bullet.up * 1.2f, Space.World);
 
             //근접은 관통이 필요없어서 -1
-            bullet.GetComponent<Bullet>().Init(damage, -1);
+            bullet.GetComponent<Bullet>().Init(damage, -1, Vector3.zero);
         }
+    }
+
+    void Fire()
+    {
+        if (!player.scanner.nearestTarget) return ;
+
+        //타겟방향 지정
+        Vector3 targetPos = player.scanner.nearestTarget.position;
+        Vector3 targetDir = (targetPos - transform.position).normalized;
+
+        Transform bullet = GameManager.instance.pool.Get(2).transform;
+        bullet.position = transform.position;
+
+        //지정된 포지션 중심으로 목표를 향해 회전하는 함수 (벡터와 쿼터니언 배우기)
+        bullet.rotation = Quaternion.FromToRotation(Vector3.up, targetDir);
+
+        bullet.GetComponent<Bullet>().Init(damage, count, targetDir);
     }
 }
