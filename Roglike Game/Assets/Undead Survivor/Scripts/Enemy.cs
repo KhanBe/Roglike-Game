@@ -7,9 +7,14 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float health;
     public float maxHealth;
+    Collider2D coll;
+
     //애니메이터컨트롤러 관리 변수
     public RuntimeAnimatorController[] animCon;
     public Rigidbody2D target;
+
+    //다음 fixedUpdate가 될때까지 기다린다
+    WaitForFixedUpdate wait;
 
     bool isLive;
     Rigidbody2D rigid;
@@ -21,12 +26,18 @@ public class Enemy : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        coll = GetComponent<Collider2D>();
+
+        wait = new WaitForFixedUpdate();
+        
     }
 
     //물리적 이동에는 FixedUpdate()
     void FixedUpdate()
     {
-        if (!isLive) return;
+        //hit 애니일때 넉백을 주기 위해 물리이동 필터
+        //인자 0 -> animator의 Base Layer값이 된다.
+        if (!isLive || animator.GetCurrentAnimatorStateInfo(0).IsName("Hit")) return;
 
         //dirVec에 normalized하면 방향이 나오게 된다.
         Vector2 dirVec = target.position - rigid.position;
@@ -50,6 +61,10 @@ public class Enemy : MonoBehaviour
         //Enemy의 타겟 설정
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
         isLive = true;
+        coll.enabled = true;
+        rigid.simulated = true;
+        spriter.sortingOrder = 2;//order in layer
+        animator.SetBool("Dead", false);
         health = maxHealth;
     }
 
@@ -64,21 +79,40 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision) 
     {
-        if (!collision.CompareTag("Bullet")) return;
+        if (!collision.CompareTag("Bullet") || !isLive) return;
 
         health -= collision.GetComponent<Bullet>().damage;
+        StartCoroutine(KnockBack());
 
         if (health > 0) {
-
+            animator.SetTrigger("Hit");
         }
         else {
-            Dead();
+            //비활성화
+            isLive = false;
+            coll.enabled = false;
+            rigid.simulated = false;
+            spriter.sortingOrder = 1;//order in layer
+            animator.SetBool("Dead", true);
+            //Dead();animation ->add event로 1초뒤 함수 불러 옮
+
+            GameManager.instance.kill++;
+            GameManager.instance.GetExp();
         }
+    }
+
+    //코루틴
+    IEnumerator KnockBack()
+    {
+        yield return wait;
+        Vector3 playerPos = GameManager.instance.player.transform.position;
+        Vector3 knockBackdir = transform.position - playerPos;
+
+        rigid.AddForce(knockBackdir.normalized * 3, ForceMode2D.Impulse);
     }
 
     void Dead() 
     {
         gameObject.SetActive(false);
-        isLive = false;
     }
 }

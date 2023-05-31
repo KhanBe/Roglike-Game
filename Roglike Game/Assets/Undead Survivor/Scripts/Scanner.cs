@@ -33,7 +33,6 @@ public class Scanner : MonoBehaviour
                 minDiff = diff;
             }
         }
-
         return result;
     }
 }
