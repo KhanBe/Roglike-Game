@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public int level;
     public int kill;
     public int exp;
+    public int health;
+    public int maxHealth = 100;
     public int[] nextExp = {3, 5, 10, 100, 150, 210, 280, 360, 450, 600};
     [Header("# Game Object")]
     public Player player;
@@ -23,6 +25,11 @@ public class GameManager : MonoBehaviour
         instance = this;//자기 자신 값 넣기
     }
 
+    void Start() 
+    {
+        health = maxHealth;
+    }
+    
     void Update()
     {
         gameTime += Time.deltaTime;
