@@ -26,6 +26,16 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        Vector3 bulletPos = transform.position;
+        Vector3 playerPos = GameManager.instance.player.transform.position;
+
+        if ((bulletPos - playerPos).magnitude > 10) {
+            gameObject.SetActive(false);
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Enemy") || per == -1) return;

@@ -96,8 +96,11 @@ public class Enemy : MonoBehaviour
             animator.SetBool("Dead", true);
             //Dead();animation ->add event로 1초뒤 함수 불러 옮
 
+            //경험치 떨구기
+            GameObject exp = GameManager.instance.pool.Get(3);
+            exp.transform.position = transform.position;
+
             GameManager.instance.kill++;
-            GameManager.instance.GetExp();
         }
     }
 

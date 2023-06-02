@@ -19886,6 +19886,7 @@ MonoBehaviour:
   - {fileID: 1409147385684797196, guid: 83353ad1731d28847bbcf0885bd927d0, type: 3}
   - {fileID: 6135204310572715967, guid: 63a1bbfed801a9d4d89860256015a84c, type: 3}
   - {fileID: 8329611503525554878, guid: 790884a31df31534cbaccfac4d189c7a, type: 3}
+  - {fileID: 3846968029052029807, guid: d80b21993139a8640aba5c5b849d7990, type: 3}
 --- !u!4 &1796163783
 Transform:
   m_ObjectHideFlags: 0
@@ -20176,7 +20177,7 @@ MonoBehaviour:
   id: 1
   prefabId: 2
   damage: 5
-  count: 1
+  count: 0
   speed: 0
 --- !u!1 &2037524456
 GameObject:
@@ -20303,7 +20304,7 @@ GameObject:
   - component: {fileID: 2060592883}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
