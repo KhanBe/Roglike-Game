@@ -15,15 +15,15 @@ public class Weapon : MonoBehaviour
 
     void Awake() 
     {   
-        //부모오브젝트의 컴포넌트 가져오기
-        player = GetComponentInParent<Player>();
+        player = GameManager.instance.player;
     }
 
+    /*
     void Start()
     {
         Init();
     }
-
+    */
     void Update() 
     {
         switch (id)
@@ -52,13 +52,30 @@ public class Weapon : MonoBehaviour
     public void LevelUp(float damage, int count)
     {
         this.damage = damage;
-        this.count = count;
+        this.count += count;
 
         if (id == 0) Locate();
     }
 
-    public void Init()
+    public void Init(ItemData data)//초기설정
     {
+        //오브젝트 이름
+        name = "Weapon " + data.itemId;
+        //오브젝트 위치
+        transform.parent = player.transform;
+        //플레이어 안에서 포지션 초기화
+        transform.localPosition = Vector3.zero;
+
+        id = data.itemId;
+        damage = data.baseDamage;
+        count = data.baseCount;
+        for (int i = 0; i < GameManager.instance.pool.prefabs.Length; i++) {
+            if (data.projectile == GameManager.instance.pool.prefabs[i]) {
+                prefabId = i;
+                break;
+            }
+        }
+        
         switch (id)
         {
             case 0:
@@ -99,7 +116,7 @@ public class Weapon : MonoBehaviour
             Vector3 rotVec = Vector3.forward * 360 * i / count;
             bullet.Rotate(rotVec);
             //배치 -> local(자신)기준 up한것을 Space.World 기준으로 변환한다
-            bullet.Translate(bullet.up * 1.2f, Space.World);
+            bullet.Translate(bullet.up * 1.5f, Space.World);
 
             //근접은 관통이 필요없어서 -1
             bullet.GetComponent<Bullet>().Init(damage, -1, Vector3.zero);

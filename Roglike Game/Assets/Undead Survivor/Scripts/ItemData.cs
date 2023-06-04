@@ -21,7 +21,7 @@ public class ItemData : ScriptableObject
 
     //레벨업
     public float[] damages;
-    public int[] count;
+    public int[] counts;
 
     [Header("# Weapon")]
     public GameObject projectile;
