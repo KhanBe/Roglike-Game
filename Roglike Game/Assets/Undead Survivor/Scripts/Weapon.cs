@@ -18,12 +18,6 @@ public class Weapon : MonoBehaviour
         player = GameManager.instance.player;
     }
 
-    /*
-    void Start()
-    {
-        Init();
-    }
-    */
     void Update() 
     {
         switch (id)
@@ -44,9 +38,6 @@ public class Weapon : MonoBehaviour
             default:
                 break;
         }
-
-        //레벨업 예시
-        if (Input.GetButtonDown("Jump")) LevelUp(damage + 10, ++count);
     }
 
     public void LevelUp(float damage, int count)
@@ -55,6 +46,11 @@ public class Weapon : MonoBehaviour
         this.count += count;
 
         if (id == 0) Locate();
+
+        //특정 함수 호출을 모든 자식에게 보내는 함수
+        //자식에 Gear오브젝트의 gear컴포넌트가 없을 경우가있으면 받을자식이 없어짐
+        //에러를 막기 위해 옵션 추가
+        player.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
     }
 
     public void Init(ItemData data)//초기설정
@@ -83,11 +79,14 @@ public class Weapon : MonoBehaviour
                 Locate();
                 break;
             case 1:
-                speed = 0.3f;
+                speed = 0.5f;
                 break;
             default:
                 break;
         }
+
+        //특정 함수 호출을 모든 자식에게 명령하는 함수
+        player.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
     }
 
     //삽 배치
