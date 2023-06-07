@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public Vector2 inputVector;
     public float speed = 3f;
     public Scanner scanner;
+    public Hand[] hands;
 
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
@@ -19,6 +20,9 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         scanner = GetComponent<Scanner>();
+
+        //비활성화 된 오브젝트는 가져오지 못한다, (true 인자)비활성화된 오브젝트도 가져온다.
+        hands = GetComponentsInChildren<Hand>(true);
     }
 
     void FixedUpdate() 

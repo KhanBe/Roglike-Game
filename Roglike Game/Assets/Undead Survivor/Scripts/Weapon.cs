@@ -85,6 +85,8 @@ public class Weapon : MonoBehaviour
                 break;
         }
 
+        GetHand(id, data);
+
         //특정 함수 호출을 모든 자식에게 명령하는 함수
         player.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
     }
@@ -137,5 +139,12 @@ public class Weapon : MonoBehaviour
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, targetDir);
 
         bullet.GetComponent<Bullet>().Init(damage, count, targetDir);
+    }
+
+    void GetHand(int id, ItemData data)//무기장착 손 보이기
+    {
+        Hand hand = player.hands[id];
+        hand.spriter.sprite = data.hand;
+        hand.gameObject.SetActive(true);
     }
 }
