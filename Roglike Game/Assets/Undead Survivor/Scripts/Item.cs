@@ -7,6 +7,7 @@ public class Item : MonoBehaviour
 {
     public ItemData data;
     public int level;
+    public bool isMaxLevel;
     public Weapon weapon;
     public Gear gear;
 
@@ -28,6 +29,8 @@ public class Item : MonoBehaviour
         textDesc = texts[2];
 
         textName.text = data.itemName;
+
+        isMaxLevel = false;
     }
 
     //활성화 시
@@ -97,6 +100,9 @@ public class Item : MonoBehaviour
 
         if (level == data.damages.Length) {//최대레벨 초과시
             GetComponent<Button>().interactable = false;
+
+            isMaxLevel = true;
+            LevelUp.maxLevelItemCount++;
         }
     }
 }
