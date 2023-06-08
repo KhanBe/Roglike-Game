@@ -18,6 +18,8 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.instance.isLive) return;
+        
         timer += Time.deltaTime;
         
         //내림 후 int

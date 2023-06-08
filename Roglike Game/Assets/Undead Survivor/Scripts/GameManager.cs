@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     //static으로 메모리에 할당
     public static GameManager instance;
     [Header("# Game Control")]
+    public bool isLive;
     public float gameTime;
     public float maxGameTime = 2 * 10f;
     [Header("# Player Info")]
@@ -19,7 +20,8 @@ public class GameManager : MonoBehaviour
     [Header("# Game Object")]
     public Player player;
     public PoolManager pool;
-    
+    public LevelUp LevelUpUi;
+
     void Awake()
     {
         instance = this;//자기 자신 값 넣기
@@ -28,10 +30,15 @@ public class GameManager : MonoBehaviour
     void Start() 
     {
         health = maxHealth;
+
+        //임시
+        LevelUpUi.Select(0);
     }
     
     void Update()
     {
+        if (!isLive) return;
+
         gameTime += Time.deltaTime;
 
         if (gameTime > maxGameTime){
@@ -43,9 +50,27 @@ public class GameManager : MonoBehaviour
     {
         exp++;
 
-        if (exp == nextExp[level]) {
+        //최대 레벨일 경우 마지막 경험치만
+        if (exp == nextExp[Mathf.Min(level, nextExp.Length - 1)]) {//레벨업 시
             level++;
             exp = 0;
+            LevelUpUi.Show();
         }
+    }
+
+    public void Stop()
+    {
+        isLive = false;
+
+        //tiemScale = 시간이 흐르는 속도
+        Time.timeScale = 0;
+    }
+
+    public void Resume()
+    {
+        isLive = true;
+
+        //tiemScale = 시간이 흐르는 속도
+        Time.timeScale = 1;
     }
 }

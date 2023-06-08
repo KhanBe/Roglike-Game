@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
 
     void FixedUpdate() 
     {
+        if (!GameManager.instance.isLive) return;
+
         Vector2 nextVector = inputVector * speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVector);
     }
@@ -34,6 +36,8 @@ public class Player : MonoBehaviour
     //프레임 넘어가기 전 함수
     void LateUpdate() 
     {
+        if (!GameManager.instance.isLive) return;
+        
         //flipX 
         if (inputVector.x < 0) spriteRenderer.flipX = true;
         else if (0 < inputVector.x) spriteRenderer.flipX = false;

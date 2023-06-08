@@ -12,6 +12,7 @@ public class ItemData : ScriptableObject
     public ItemType itemType;
     public int itemId;
     public string itemName;
+    [TextArea]//text영역을 크게(inspector)
     public string itemDesc;
     public Sprite itemIcon;
 

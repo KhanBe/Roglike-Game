@@ -35,6 +35,8 @@ public class Enemy : MonoBehaviour
     //물리적 이동에는 FixedUpdate()
     void FixedUpdate()
     {
+        if (!GameManager.instance.isLive) return;
+
         //hit 애니일때 넉백을 주기 위해 물리이동 필터
         //인자 0 -> animator의 Base Layer값이 된다.
         if (!isLive || animator.GetCurrentAnimatorStateInfo(0).IsName("Hit")) return;
@@ -49,6 +51,7 @@ public class Enemy : MonoBehaviour
 
     void LateUpdate() 
     {
+        if (!GameManager.instance.isLive) return;
         if (!isLive) return;
 
         //flipX
