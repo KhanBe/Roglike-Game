@@ -6,9 +6,11 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public Vector2 inputVector;
-    public float speed = 3f;
+    public float speed;
     public Scanner scanner;
     public Hand[] hands;
+    //애니메이션컨트롤러 다루는 클래스
+    public RuntimeAnimatorController[] animCon;
 
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
@@ -23,6 +25,12 @@ public class Player : MonoBehaviour
 
         //비활성화 된 오브젝트는 가져오지 못한다, (true 인자)비활성화된 오브젝트도 가져온다.
         hands = GetComponentsInChildren<Hand>(true);
+    }
+
+    void OnEnable()
+    {
+        speed *= Character.Speed;
+        animator.runtimeAnimatorController = animCon[GameManager.instance.playerId];
     }
 
     void FixedUpdate() 
