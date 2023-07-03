@@ -87,10 +87,11 @@ public class Enemy : MonoBehaviour
         health -= collision.GetComponent<Bullet>().damage;
         StartCoroutine(KnockBack());
 
-        if (health > 0) {
+        if (health > 0) {//피 깍이거나
             animator.SetTrigger("Hit");
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Hit);
         }
-        else {
+        else {//죽었을 때
             //비활성화
             isLive = false;
             coll.enabled = false;
@@ -99,10 +100,12 @@ public class Enemy : MonoBehaviour
             animator.SetBool("Dead", true);
             //Dead();animation ->add event로 1초뒤 함수 불러 옮
 
+            if (GameManager.instance.isLive)
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Dead);
+
             //경험치 떨구기
             GameObject exp = GameManager.instance.pool.Get(3);
             exp.transform.position = transform.position;
-
             GameManager.instance.kill++;
         }
     }

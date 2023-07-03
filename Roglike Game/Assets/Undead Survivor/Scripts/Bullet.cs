@@ -21,28 +21,34 @@ public class Bullet : MonoBehaviour
         this.damage = damage;
         this.per = per;
 
-        if (per > -1) {//속도 지정
+        if (0 <= per) {//속도 지정
             rigid.velocity = dir * 10f;
         }
     }
 
     void FixedUpdate()
     {
+        OutOfPlayer();
+    }
+
+    void OutOfPlayer()
+    {
         Vector3 bulletPos = transform.position;
         Vector3 playerPos = GameManager.instance.player.transform.position;
 
-        if ((bulletPos - playerPos).magnitude > 10) {
+        if ((bulletPos - playerPos).magnitude > 10)
+        {
             gameObject.SetActive(false);
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Enemy") || per == -1) return;
+        if (!collision.CompareTag("Enemy") || per == -100) return;
 
         per--;
 
-        if (per == -1) {
+        if (per < 0) {
             rigid.velocity = Vector2.zero;
             gameObject.SetActive(false);
         }

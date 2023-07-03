@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     public Transform[] spawnPoint;
     public SpawnData[] spawnData;
+    public float levelTime;
 
     float timer;
     int level;
@@ -14,6 +15,7 @@ public class Spawner : MonoBehaviour
     {
         //자신 오브젝트를 포함 한 자식오브젝트의 여러개 컴포넌트 초기화
         spawnPoint = GetComponentsInChildren<Transform>();
+        levelTime = GameManager.instance.maxGameTime / spawnData.Length;
     }
 
     void Update()
@@ -23,7 +25,7 @@ public class Spawner : MonoBehaviour
         timer += Time.deltaTime;
         
         //내림 후 int
-        level = Mathf.Min(Mathf.FloorToInt(GameManager.instance.gameTime / 10f), spawnData.Length - 1);
+        level = Mathf.Min(Mathf.FloorToInt(GameManager.instance.gameTime / levelTime), spawnData.Length - 1);
         if (timer > spawnData[level].spawnTime) {
             timer = 0f;
             Spawn();

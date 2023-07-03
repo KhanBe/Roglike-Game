@@ -123,7 +123,7 @@ public class Weapon : MonoBehaviour
             bullet.Translate(bullet.up * 1.5f, Space.World);
 
             //근접은 관통이 필요없어서 -1
-            bullet.GetComponent<Bullet>().Init(damage, -1, Vector3.zero);
+            bullet.GetComponent<Bullet>().Init(damage, -100, Vector3.zero);
         }
     }
 
@@ -142,6 +142,8 @@ public class Weapon : MonoBehaviour
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, targetDir);
 
         bullet.GetComponent<Bullet>().Init(damage, count, targetDir);
+
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Range);
     }
 
     void GetHand(int id, ItemData data)//무기장착 손 보이기
