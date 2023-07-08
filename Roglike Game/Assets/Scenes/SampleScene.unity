@@ -2061,7 +2061,7 @@ MonoBehaviour:
   exp: 0
   health: 0
   maxHealth: 100
-  nextExp: 030000000a0000003200000064000000c80000002c01000090010000f401000058020000bc020000
+  nextExp: 030000000a0000001e0000003200000064000000c80000002c01000090010000f401000058020000
   player: {fileID: 2060592880}
   pool: {fileID: 1796163782}
   LevelUpUi: {fileID: 1738709894}
@@ -2374,6 +2374,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6f0c572d865b4664db7a460972bc4768, type: 3}
   - {fileID: 8300000, guid: 4b294d59d2399014daa718b35c9de73b, type: 3}
   - {fileID: 8300000, guid: 2c4bc183a5df5aa4baf7c4fcf236a2de, type: 3}
+  - {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
   sfxVolume: 0.2
   channels: 16
 --- !u!82 &406501974
@@ -26213,7 +26214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 2}
+  m_AnchoredPosition: {x: 0, y: 2.0000076}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1916885348
@@ -26898,6 +26899,8 @@ MonoBehaviour:
   animCon:
   - {fileID: 9100000, guid: ce326e8887050ad4eab25997d18c66e7, type: 2}
   - {fileID: 22100000, guid: fe29f9dcfd360b64994da0d3c4a6e3a4, type: 2}
+  - {fileID: 22100000, guid: ecbe8e9b6d779c14abd6924596483aed, type: 2}
+  - {fileID: 22100000, guid: 0e498d486144e3944ba4b28a46a11249, type: 2}
 --- !u!114 &2060592881
 MonoBehaviour:
   m_ObjectHideFlags: 0

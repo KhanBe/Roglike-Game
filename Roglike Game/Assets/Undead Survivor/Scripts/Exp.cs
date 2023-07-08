@@ -10,6 +10,8 @@ public class Exp : MonoBehaviour
 
         GameManager.instance.GetExp();
 
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Coin);
+
         gameObject.SetActive(false);
     }
 }
