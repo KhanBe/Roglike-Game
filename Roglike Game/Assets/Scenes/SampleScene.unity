@@ -2375,6 +2375,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4b294d59d2399014daa718b35c9de73b, type: 3}
   - {fileID: 8300000, guid: 2c4bc183a5df5aa4baf7c4fcf236a2de, type: 3}
   - {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  - {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
   sfxVolume: 0.2
   channels: 16
 --- !u!82 &406501974
@@ -25778,6 +25779,7 @@ MonoBehaviour:
   - {fileID: 6135204310572715967, guid: 63a1bbfed801a9d4d89860256015a84c, type: 3}
   - {fileID: 8329611503525554878, guid: 790884a31df31534cbaccfac4d189c7a, type: 3}
   - {fileID: 3846968029052029807, guid: d80b21993139a8640aba5c5b849d7990, type: 3}
+  - {fileID: 490161140270315756, guid: d127978d96fa2404d9b3e51288025160, type: 3}
 --- !u!4 &1796163783
 Transform:
   m_ObjectHideFlags: 0

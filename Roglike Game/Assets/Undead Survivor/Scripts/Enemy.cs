@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
 
     //애니메이터컨트롤러 관리 변수
     public RuntimeAnimatorController[] animCon;
+
     public Rigidbody2D target;
 
     //다음 fixedUpdate가 될때까지 기다린다
@@ -104,8 +105,12 @@ public class Enemy : MonoBehaviour
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.Dead);
 
             //경험치 떨구기
-            GameObject exp = GameManager.instance.pool.Get(3);
-            exp.transform.position = transform.position;
+            DropItem(3);
+
+            //자석 떨구기(2%)
+            int ran = Random.Range(0, 100);
+            if (ran == 0 || ran == 1) DropItem(4);
+
             GameManager.instance.kill++;
         }
     }
@@ -123,5 +128,12 @@ public class Enemy : MonoBehaviour
     void Dead() 
     {
         gameObject.SetActive(false);
+    }
+
+    //아이템 떨구기 함수
+    void DropItem(int itemNumber)
+    {
+        GameObject Item = GameManager.instance.pool.Get(itemNumber);
+        Item.transform.position = transform.position;
     }
 }

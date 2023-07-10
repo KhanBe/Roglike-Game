@@ -8,7 +8,7 @@ public class PoolManager : MonoBehaviour
     public GameObject[] prefabs;
 
     //풀 담당하는 리스트들 (배열안에 리스트)
-    List<GameObject>[] pools;
+    public List<GameObject>[] pools;
 
     void Awake() 
     {
