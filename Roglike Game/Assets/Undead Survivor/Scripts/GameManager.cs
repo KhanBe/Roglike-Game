@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public LevelUp LevelUpUi;
     public Result uiResult;
     public GameObject enemyCleaner;
+    public Transform uiJoy;
 
     void Awake()
     {
@@ -125,6 +126,7 @@ public class GameManager : MonoBehaviour
 
         //tiemScale = 시간이 흐르는 속도
         Time.timeScale = 0;
+        uiJoy.localScale = Vector3.zero;
     }
 
     public void Resume()
@@ -133,5 +135,6 @@ public class GameManager : MonoBehaviour
 
         //tiemScale = 시간이 흐르는 속도
         Time.timeScale = 1;
+        uiJoy.localScale = Vector3.one;
     }
 }
